@@ -28,3 +28,14 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`App listening to port ${PORT}`);
 });
+
+const mainRoutes = require("./routes/mainRoutes");
+app.use("/", mainRoutes);
+
+app.get("/messages", function (req, res, next) {
+    res.json(req.query);
+})
+
+app.post("/messages", function (req, res, next) {
+    res.json(req.body);
+})
